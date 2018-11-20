@@ -1,0 +1,13 @@
+
+[woost.models.settings]
+
+    [x_nocaptcha_public_key]
+    ca: Clau del lloc
+    es: Clave del sitio
+    en: Site key
+
+    [x_nocaptcha_private_key]
+    ca: Clau secreta
+    es: Clave secreta
+    en: Secret key
+

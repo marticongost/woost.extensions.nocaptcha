@@ -1,0 +1,6 @@
+
+[woost.extensions.nocaptcha.admin.sections]
+
+    [NoCaptchaSection.instance]
+    *: NoCaptcha
+
