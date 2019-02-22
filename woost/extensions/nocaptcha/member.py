@@ -1,12 +1,12 @@
 #-*- coding: utf-8 -*-
-u"""
+"""
 
 .. moduleauthor:: Martí Congost <marti.congost@whads.com>
 """
 import cherrypy
 from json import loads
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 from cocktail.translations import translations
 from cocktail import schema
 from cocktail.html.uigeneration import default_edit_control
@@ -40,13 +40,13 @@ class NoCaptcha(schema.String):
 
         value = context.value
         if value:
-            params = urllib.urlencode({
+            params = urllib.parse.urlencode({
                 "secret" : get_setting("x_nocaptcha_private_key"),
                 "response" : value,
                 "remoteip" : cherrypy.request.remote.ip
             })
 
-            request = urllib2.Request(
+            request = urllib.request.Request(
                 url = self.VERIFY_SERVER,
                 data = params,
                 headers = {
@@ -55,7 +55,7 @@ class NoCaptcha(schema.String):
                 }
             )
 
-            httpresp = urllib2.urlopen(request)
+            httpresp = urllib.request.urlopen(request)
             return_values = httpresp.read()
             httpresp.close()
             response_json = loads(return_values)
