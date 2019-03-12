@@ -44,7 +44,7 @@ class NoCaptcha(schema.String):
                 "secret" : get_setting("x_nocaptcha_private_key"),
                 "response" : value,
                 "remoteip" : cherrypy.request.remote.ip
-            })
+            }).encode("utf-8")
 
             request = urllib.request.Request(
                 url = self.VERIFY_SERVER,
